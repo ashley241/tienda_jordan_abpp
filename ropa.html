@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Store - Ropa</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #111; color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 3px solid #e21b23; }
+        .logo { font-size: 22px; font-weight: bold; }
+        .logo span { color: #e21b23; }
+        nav a { color: #fff; text-decoration: none; margin-left: 15px; font-weight: bold; }
+        nav a:hover { color: #e21b23; }
+        .btn-nav { background-color: #e21b23; padding: 8px 15px; border-radius: 4px; }
+        .btn-carrito { background-color: #333; padding: 8px 12px; border-radius: 4px; border: 1px solid #e21b23; }
+        .contador { background: #e21b23; padding: 2px 6px; border-radius: 10px; font-size: 12px; }
+
+        .contenedor { max-width: 1100px; margin: 30px auto; padding: 0 20px; text-align: center; flex: 1; }
+        .grid-productos { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+        .card { background-color: #222; border: 1px solid #333; border-radius: 8px; width: 240px; padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; }
+        .card h3 { margin: 10px 0 5px 0; font-size: 15px; }
+        .precio { color: #e21b23; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+
+        .btn-comprar { background-color: #e21b23; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-comprar:hover { background-color: #b8141b; }
+
+        footer { background-color: #000; text-align: center; padding: 20px; border-top: 2px solid #333; margin-top: 40px; color: #aaa; font-size: 14px; }
+        footer span { color: #fff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">JORDAN <span>STORE</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="calzado.html">Calzado</a>
+            <a href="ropa.html">Ropa</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="carrito.html" class="btn-carrito">🛒 Carrito <span id="cart-count" class="contador">0</span></a>
+            <a href="login.php">Iniciar Sesión</a>
+            <a href="registro.php" class="btn-nav">Registrarse</a>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+        <h1>Categoría: Ropa</h1>
+        <p style="color: #aaa; margin-top: 8px;">Colección de prendas deportivas Jordan</p>
+        
+        <div class="grid-productos">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400" alt="Sudadera Jordan Essentials">
+                <h3>Sudadera Jordan Essentials</h3>
+                <p class="precio">$75.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Sudadera Jordan Essentials', 75, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" alt="Playera Jordan Jumpman">
+                <h3>Playera Jordan Jumpman</h3>
+                <p class="precio">$35.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Playera Jordan Jumpman', 35, 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?q=80&w=400" alt="Pantalón Jogger Jordan">
+                <h3>Pantalón Jogger Jordan</h3>
+                <p class="precio">$65.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Pantalón Jogger Jordan', 65, 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=400" alt="Chamarra Jordan Flight">
+                <h3>Chamarra Jordan Flight</h3>
+                <p class="precio">$120.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Chamarra Jordan Flight', 120, 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=400" alt="Shorts Jordan Sport">
+                <h3>Shorts Jordan Sport</h3>
+                <p class="precio">$40.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Shorts Jordan Sport', 40, 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d662707a-020e-4a95-b67d-e17f2e2bd6f8/FCB+M+NK+DF+JSY+SS+STAD+HM.png" alt="Jersey FC Barcelona Jordan">
+                <h3>Jersey FC Barcelona Jordan</h3>
+                <p class="precio">$100.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Jersey FC Barcelona Jordan', 100, 'https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d662707a-020e-4a95-b67d-e17f2e2bd6f8/FCB+M+NK+DF+JSY+SS+STAD+HM.png')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=400" alt="Sudadera Con Capucha">
+                <h3>Sudadera Con Capucha</h3>
+                <p class="precio">$85.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Sudadera Con Capucha', 85, 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=400" alt="Playera Manga Larga">
+                <h3>Playera Manga Larga</h3>
+                <p class="precio">$45.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Playera Manga Larga', 45, 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=400" alt="Chamarra Rompevientos">
+                <h3>Chamarra Rompevientos</h3>
+                <p class="precio">$110.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Chamarra Rompevientos', 110, 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=400')">Comprar</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400" alt="Pantaloneta Baloncesto">
+                <h3>Pantaloneta Baloncesto</h3>
+                <p class="precio">$38.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Pantaloneta Baloncesto', 38, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400')">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desarrollado por: <span>Angel Daniel Herrera Perez</span> | Asignatura: Programación Web | Octubre 2026</p>
+    </footer>
+
+
+    <script>
+        function actualizarContador() {
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            document.getElementById('cart-count').textContent = carrito.length;
+        }
+
+        function agregarAlCarrito(nombre, precio, imagen) {
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            carrito.push({ nombre: nombre, precio: precio, imagen: imagen });
+            localStorage.setItem('mi_carrito', JSON.stringify(carrito));
+            
+            actualizarContador();
+            alert('¡' + nombre + ' se agregó al carrito!');
+        }
+
+        actualizarContador();
+    </script>
+</body>
+</html>

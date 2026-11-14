@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Store - Calzado</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #111; color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 3px solid #e21b23; }
+        .logo { font-size: 22px; font-weight: bold; }
+        .logo span { color: #e21b23; }
+        nav a { color: #fff; text-decoration: none; margin-left: 15px; font-weight: bold; }
+        nav a:hover { color: #e21b23; }
+        .btn-nav { background-color: #e21b23; padding: 8px 15px; border-radius: 4px; }
+        .btn-carrito { background-color: #333; padding: 8px 12px; border-radius: 4px; border: 1px solid #e21b23; }
+        .contador { background: #e21b23; padding: 2px 6px; border-radius: 10px; font-size: 12px; }
+
+        .contenedor { max-width: 1100px; margin: 30px auto; padding: 0 20px; text-align: center; flex: 1; }
+        .grid-productos { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+        .card { background-color: #222; border: 1px solid #333; border-radius: 8px; width: 240px; padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; }
+        .card h3 { margin: 10px 0 5px 0; font-size: 15px; }
+        .precio { color: #e21b23; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+
+        .btn-comprar { background-color: #e21b23; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-comprar:hover { background-color: #b8141b; }
+
+        footer { background-color: #000; text-align: center; padding: 20px; border-top: 2px solid #333; margin-top: 40px; color: #aaa; font-size: 14px; }
+        footer span { color: #fff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">JORDAN <span>STORE</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="calzado.html">Calzado</a>
+            <a href="ropa.html">Ropa</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="carrito.html" class="btn-carrito">🛒 Carrito <span id="cart-count" class="contador">0</span></a>
+            <a href="login.php">Iniciar Sesión</a>
+            <a href="registro.php" class="btn-nav">Registrarse</a>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+        <h1>Categoría: Calzado</h1>
+        <p style="color: #aaa; margin-top: 8px;">Catálogo de tenis y calzado Jordan</p>
+        
+        <div class="grid-productos">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=400" alt="Air Jordan 1">
+                <h3>Air Jordan 1 Retro</h3>
+                <p class="precio">$180.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 Retro', 180, 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=400')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?q=80&w=400" alt="Air Jordan 4">
+                <h3>Air Jordan 4 OG</h3>
+                <p class="precio">$210.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 4 OG', 210, 'https://images.unsplash.com/photo-1597045566677-8cf032ed6634?q=80&w=400')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=400" alt="Air Jordan 11">
+                <h3>Air Jordan 11 Low</h3>
+                <p class="precio">$190.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 11 Low', 190, 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=400')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/913475d5-7d4f-44d8-b249-662c4d99cfd2/AIR+JORDAN+1+RETRO+LOW+OG.png" alt="Air Jordan 1 Retro Low">
+                <h3>Air Jordan 1 Retro Low</h3>
+                <p class="precio">$200.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 Retro Low', 200, 'https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/913475d5-7d4f-44d8-b249-662c4d99cfd2/AIR+JORDAN+1+RETRO+LOW+OG.png')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://product-media.cdn.t1.com/product-channel/19530/2026/6/20/eca2f7533d1ec63a3f453efacc424fdb.jpg?scale=550" alt="Air Jordan 1 Mid SE">
+                <h3>Air Jordan 1 Mid SE Negro</h3>
+                <p class="precio">$130.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 Mid SE Negro', 130, 'https://product-media.cdn.t1.com/product-channel/19530/2026/6/20/eca2f7533d1ec63a3f453efacc424fdb.jpg?scale=550')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://product-media.cdn.t1.com/product-channel/19530/2026/4/25/3b70c632bae2864282cbcb72b8014616.jpg?scale=550" alt="Air Jordan 1 Azul">
+                <h3>Air Jordan 1 Azul</h3>
+                <p class="precio">$120.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 Azul', 120, 'https://product-media.cdn.t1.com/product-channel/19530/2026/4/25/3b70c632bae2864282cbcb72b8014616.jpg?scale=550')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://lustmexico.com/cdn/shop/files/DZ5485-003-1.jpg?v=1771369341&width=1600" alt="Air Jordan 1 High OG">
+                <h3>Air Jordan 1 High OG</h3>
+                <p class="precio">$100.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 High OG', 100, 'https://lustmexico.com/cdn/shop/files/DZ5485-003-1.jpg?v=1771369341&width=1600')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://dpjye2wk9gi5z.cloudfront.net/wcsstore/ExtendedSitesCatalogAssetStore/images/catalog/zoom/1039016-0005V1.jpg" alt="Jordan Spizike Low">
+                <h3>Jordan Spizike Low</h3>
+                <p class="precio">$98.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Jordan Spizike Low', 98, 'https://dpjye2wk9gi5z.cloudfront.net/wcsstore/ExtendedSitesCatalogAssetStore/images/catalog/zoom/1039016-0005V1.jpg')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://deu.com.mx/_next/image?url=https%3A%2F%2Fimg.deu.agency%2Fdeu%2Fair-jordan-1-low-grey-id-444%2Flateral.webp&w=640&q=75" alt="Air Jordan 1 Low Grey">
+                <h3>Air Jordan 1 Low Grey</h3>
+                <p class="precio">$124.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 Low Grey', 124, 'https://deu.com.mx/_next/image?url=https%3A%2F%2Fimg.deu.agency%2Fdeu%2Fair-jordan-1-low-grey-id-444%2Flateral.webp&w=640&q=75')">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e4502ae2-844a-4b08-a5b6-997c92820a50/WMNS+AIR+JORDAN+1+MID.png" alt="Air Jordan 1 Mid">
+                <h3>Air Jordan 1 Mid</h3>
+                <p class="precio">$185.00 USD</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito('Air Jordan 1 Mid', 185, 'https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e4502ae2-844a-4b08-a5b6-997c92820a50/WMNS+AIR+JORDAN+1+MID.png')">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desarrollado por: <span>Angel Daniel Herrera Perez</span> | Asignatura: Programación Web | Octubre 2026</p>
+    </footer>
+
+    <script>
+        function actualizarContador() {
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            document.getElementById('cart-count').textContent = carrito.length;
+        }
+
+        function agregarAlCarrito(nombre, precio, imagen) {
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            carrito.push({ nombre: nombre, precio: precio, imagen: imagen });
+            localStorage.setItem('mi_carrito', JSON.stringify(carrito));
+            
+            actualizarContador();
+            alert('¡' + nombre + ' se agregó al carrito!');
+        }
+
+        actualizarContador();
+    </script>
+</body>
+</html>

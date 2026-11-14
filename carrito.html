@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Store - Tu Carrito</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #111; color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 3px solid #e21b23; }
+        .logo { font-size: 22px; font-weight: bold; }
+        .logo span { color: #e21b23; }
+        nav a { color: #fff; text-decoration: none; margin-left: 15px; font-weight: bold; }
+        nav a:hover { color: #e21b23; }
+        .btn-nav { background-color: #e21b23; padding: 8px 15px; border-radius: 4px; }
+        .btn-carrito { background-color: #e21b23; padding: 8px 12px; border-radius: 4px; }
+
+        .contenedor { max-width: 800px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; text-align: center; }
+        h1 { margin-bottom: 20px; color: #e21b23; }
+
+        table { width: 100%; border-collapse: collapse; background: #222; border-radius: 8px; overflow: hidden; margin-top: 20px; }
+        th, td { padding: 12px; text-align: center; border-bottom: 1px solid #333; }
+        th { background-color: #000; color: #e21b23; }
+        .img-prod { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
+
+        .btn-borrar { background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+        .total-box { margin-top: 20px; text-align: right; font-size: 20px; font-weight: bold; }
+        .btn-finalizar { background: #00ff00; color: #000; border: none; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 15px; }
+
+        .caja-formulario {
+            display: none;
+            background: #222;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e21b23;
+            margin-top: 30px;
+            text-align: left;
+        }
+        .caja-formulario h2 { color: #e21b23; text-align: center; margin-bottom: 15px; }
+        .caja-formulario input, .caja-formulario select, .caja-formulario textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border-radius: 4px;
+            border: none;
+        }
+        .btn-enviar {
+            background: #e21b23;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer { background-color: #000; text-align: center; padding: 20px; border-top: 2px solid #333; margin-top: auto; color: #aaa; font-size: 14px; }
+        footer span { color: #fff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">JORDAN <span>STORE</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="calzado.html">Calzado</a>
+            <a href="ropa.html">Ropa</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="carrito.html" class="btn-carrito">🛒 Carrito</a>
+            <a href="login.php">Iniciar Sesión</a>
+            <a href="registro.php" class="btn-nav">Registrarse</a>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+        <h1>Lista de Productos en Carrito</h1>
+        
+        <div id="contenido-carrito"></div>
+
+        <div class="total-box" id="caja-total" style="display:none;">
+            Total a Pagar: $<span id="suma-total">0</span> USD<br>
+            <button class="btn-finalizar" onclick="mostrarFormulario()">Realizar Compra</button>
+        </div>
+
+        <div class="caja-formulario" id="formulario-compra">
+            <h2>Datos para tu Compra</h2>
+            
+            <form onsubmit="finalizarCompra(event)">
+                <label>Nombre completo:</label>
+                <input type="text" id="nombre" placeholder="Escribe tu nombre completo" required>
+
+                <label>Correo electrónico:</label>
+                <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+
+                <label>Teléfono:</label>
+                <input type="tel" id="telefono" placeholder="Tu número de teléfono" required>
+
+                <label>Dirección de envío:</label>
+                <input type="text" id="direccion" placeholder="Calle, número y colonia" required>
+
+                <label>Ciudad:</label>
+                <input type="text" id="ciudad" placeholder="Tu ciudad" required>
+
+                <label>País:</label>
+                <input type="text" id="pais" placeholder="Tu país" required>
+
+                <label>Cantidad:</label>
+                <input type="number" id="cantidad" min="1" value="1" required>
+
+                <label>Método de pago:</label>
+                <select id="metodo_pago" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Tarjeta de Crédito o Débito">Tarjeta de Crédito o Débito</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Pago en Efectivo / OXXO">Pago en Efectivo / OXXO</option>
+                </select>
+
+                <label>Descripción adicional:</label>
+                <textarea id="descripcion" rows="3" placeholder="Escribe tallas, colores o notas de envío..."></textarea>
+
+                <button type="submit" class="btn-enviar">Confirmar Compra</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desarrollado por: <span>Angel Daniel Herrera Perez</span> | Asignatura: Programación Web | Octubre 2026</p>
+    </footer>
+
+    <script>
+        let totalPagar = 0;
+
+        function mostrarCarrito() {
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            let div = document.getElementById('contenido-carrito');
+            let cajaTotal = document.getElementById('caja-total');
+
+            if (carrito.length === 0) {
+                div.innerHTML = "<p style='color:#aaa;'>Tu carrito está vacío actualmente.</p>";
+                cajaTotal.style.display = "none";
+                return;
+            }
+
+            let tablaHTML = `
+                <table>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
+                    </tr>
+            `;
+
+            totalPagar = 0;
+            carrito.forEach((prod, index) => {
+                totalPagar += prod.precio;
+                tablaHTML += `
+                    <tr>
+                        <td><img src="${prod.imagen}" class="img-prod"></td>
+                        <td>${prod.nombre}</td> <td>$${prod.precio}.00 USD</td>
+                        <td><button class="btn-borrar" onclick="eliminar(${index})">Quitar</button></td>
+                    </tr>
+                `;
+            });
+
+            tablaHTML += "</table>";
+            div.innerHTML = tablaHTML;
+            document.getElementById('suma-total').textContent = totalPagar;
+            cajaTotal.style.display = "block";
+        }
+
+        function eliminar(index) {
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            carrito.splice(index, 1);
+            localStorage.setItem('mi_carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+        }
+
+        function mostrarFormulario() {
+            document.getElementById('formulario-compra').style.display = "block";
+        }
+
+        function finalizarCompra(event) {
+            event.preventDefault();
+            let carrito = JSON.parse(localStorage.getItem('mi_carrito')) || [];
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+
+            let paqueteDatos = {
+                nombre: document.getElementById('nombre').value,
+                correo: document.getElementById('correo').value,
+                telefono: document.getElementById('telefono').value,
+                direccion: document.getElementById('direccion').value,
+                ciudad: document.getElementById('ciudad').value,
+                pais: document.getElementById('pais').value,
+                cantidad: document.getElementById('cantidad').value,
+                metodo_pago: document.getElementById('metodo_pago').value,
+                descripcion: document.getElementById('descripcion').value,
+                total: totalPagar,
+                carrito: carrito
+            };
+
+            fetch('guardar_compra.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(paqueteDatos)
+            })
+            .then(res => res.text())
+            .then(texto => {
+                let data = JSON.parse(texto);
+                if (data.status === "success") {
+                    alert("¡Tu compra se completó con éxito!");
+                    localStorage.removeItem('mi_carrito');
+                    window.location.href = "index.html";
+                } else {
+                    alert("Error de PHP: " + data.mensaje);
+                }
+            })
+            .catch(error => {
+                alert("Ocurrió un problema: " + error);
+            });
+        }
+
+        mostrarCarrito();
+    </script>
+</body>
+</html>
